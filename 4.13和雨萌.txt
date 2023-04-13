@@ -1,0 +1,225 @@
+第一题
+#include<iostream>
+using namespace std;
+int judge_huiwen(int n)
+{
+	int arr[100]={0};
+	int i=0;
+	for(i=0;n!=0;i++)
+	{
+		arr[i]=n%10;
+		n/=10;
+	}
+	int temp=0;
+	for(int j=0;j<i;j++)
+	{
+		if(arr[j]!=arr[i-j-1])
+		{
+			temp=1;
+		}
+	}
+	if(temp==0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+int main()
+{
+	int N;
+	cin>>N;
+	int m[100],k[100];
+	for(int i=0;i<N;i++)
+	{
+		cin>>m[i];
+		cin.get();
+		cin>>k[i];
+	}
+	int count=0;
+	for(int q=0;q<N;q++)
+	{
+	    for(int j=m[q]+1;count<k[q];j++)
+		{
+			if(judge_huiwen(j)==1)
+			{
+				cout<<j<<' '<<endl;
+				count++;
+			}
+		}	
+	}
+	return 0;
+}
+第二题
+#include<iostream>
+using namespace std;
+PI=3.14;
+int cal_cir(int n)
+{
+	return n*PI*2;
+}
+int cal_su(int n)
+{
+	return n*n*PI;
+}
+int main()
+{
+	int r;
+	cout<<"Please input the banjing:";
+	cin>>r;
+	cout<<"The circumstance is: "<<cal_cir(r)<<endl;
+	cout<<"The surrounding is: "<<cal_su(r)<<endl;
+	return 0;
+}
+第三题
+#include<iostream>
+#include<string>
+#include<iomanip>
+struct Student{
+	std::string name;
+	double regular;
+	double final;
+	double ffinal;
+};
+int main()
+{
+	using namespace std;
+	Student student[100];
+	char ch='y';
+	int i=0;
+	for(i=0;ch=='y';i++)
+	{
+		getline(cin,student[i].name);
+		cin>>student[i].regular;
+		cin.get();
+		cin>>student[i].final;
+		cin.get();
+		cin>>ch;
+		cin.get();
+	}
+	for(int j=0;j<i;j++)
+	{
+		student[j].ffinal=student[j].regular*0.4+student[j].final*0.6;
+	}
+	int relist[100];
+	for(int j=0;j<i;j++)
+	{
+		int max=0;
+		int temp=0;
+		for(int k=0;k<i;k++)
+		{
+			if(student[k].ffinal>max)
+			{
+				max=student[k].ffinal;
+				temp=k;
+			}
+		}
+		relist[j]=temp;
+		max=0;
+		student[temp].ffinal=0-student[temp].ffinal;
+	}
+	for(int s=0;s<i;s++)
+	{
+		cout<<"The "<<s+1<<" student's name is "<<student[relist[s]].name<<endl;
+		cout<<"The "<<s+1<<" student's regular score is "<<fixed<<setprecision(2)<<student[relist[s]].regular<<endl;
+		cout<<"The "<<s+1<<" student's final score is "<<fixed<<setprecision(2)<<student[relist[s]].final<<endl;
+		cout<<"The "<<s+1<<" student's score is "<<fixed<<setprecision(2)<<0-student[relist[s]].ffinal<<endl;
+	}
+	return 0;
+}
+第四题：
+#include<iostream>
+#include<iomanip>
+using namespace std;
+double average(int a[])
+{
+	double sum=0;
+	for(int i=0;i<6;i++)
+	{
+		sum+=a[i];
+	}
+	return sum/6;
+}
+double fangcha(int a[])
+{
+	int ave=average(a);
+	double s=0;
+	for(int i=0;i<6;i++)
+	{
+		s+=(double)(a[i]-ave)*(a[i]-ave);
+	}
+	return s/6;
+}
+int main()
+{
+	int n;
+	cin>>n;
+	int arr[100][6];
+	for(int j=0;j<n;j++)
+	{
+		cin>>arr[j][0]>>arr[j][1]>>arr[j][2]>>arr[j][3]>>arr[j][4]>>arr[j][5];
+		cin.get();
+	}
+	for(int j=0;j<n;j++)
+	{
+		cout<<"The average of "<<j+1<<" group is: "<<fixed<<setprecision(2)<<average(arr[j])<<endl;
+		cout<<"The fangcha of "<<j+1<<" group is: "<<fixed<<setprecision(2)<<fangcha(arr[j])<<endl;
+	}
+	return 0;
+}
+第五题：
+#include<iostream>
+using namespace std;
+int main()
+{
+	int BJT;
+	cin>>BJT;
+	int n1,n2;
+	n1=BJT/100;
+	n2=BJT%100;
+	if(n1-8>0)
+	{
+	    if(n2>=10)
+	    {
+		  	cout<<n1-8<<n2;
+     	 }
+		else
+		{
+			cout<<n1-8<<'0'<<n2<<endl;
+		 }
+	}
+	else if(n1-8==0)
+	{
+		if(n2>10)
+		{
+			cout<<n2<<endl;
+		}
+		else if(0<n2<10)
+		{
+			cout<<n2<<endl;
+		}	
+		else if(n2==0)
+		{
+			cout<<'0';
+		}
+	}
+	else
+	{
+		n1=24-8+n1;
+		if(n2>=10)
+		{
+			cout<<n1<<n2<<endl;
+		}
+		else if(0<n2<10)
+		{
+			cout<<n1<<'0'<<n2<<endl;
+		}
+		else if(n2==0)
+		{
+			cout<<n1<<endl;
+		}
+	}
+	return 0;
+}
