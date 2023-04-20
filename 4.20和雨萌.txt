@@ -1,0 +1,162 @@
+第一题
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a;
+      cin>>a;
+	int arr[3];
+	for(int i=0;i<3;i++)
+	{
+		arr[i]=a%10;
+		a/=10;
+	}
+	int sum=0;
+	for(int j=0;j<3;j++)
+	{
+		sum+=arr[j];
+	}
+	return 0;
+}
+第二题
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a;
+	cout<<"Please input a count(1-4): ";
+	cin>>a;
+	switch (a){
+		case 1:
+			cout<<"Spring"<<endl;
+			break;
+		case 2:
+			cout<<"Summer"<<endl;
+			break;
+		case 3:
+			cout<<"Fall"<<endl;
+			break;
+		case 4:
+			cout<<"Winter"<<endl;
+			break;
+		}
+	return 0;
+}
+第三题
+#include<iostream>
+using namespace std;
+int main()
+{
+	int a;
+	cout<<"Please input the age: ";
+	cin>>a;
+	if(a>=1&&a<=10)
+	{
+		cout<<"Children";
+	}
+	else if(a>=11&&a<=20)
+	{
+		cout<<"Teenegers";
+	}
+	else if(a>=21&&a<=40)
+	{
+		cout<<"Youth";
+	}
+	else if(a>=41&&a<=50)
+	{
+		cout<<"middle-aged";
+	}
+	else if(a>=51&&a<=80)
+	{
+		cout<<"Elderly";
+	}
+	else
+	{
+		cout<<"Old man";
+	}
+	return 0;
+}
+第四题
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"Please input your grade: ";
+	cin>>n;
+	if(n>=90)
+	{
+		cout<<"A";
+	}
+	else if(n<90&&n>=80)
+	{
+		cout<<"B";
+	}
+	else if(n>=70 && n<80)
+	{
+		cout<<"C";
+	}
+	else if(n>=60 && n<70)
+	{
+		cout<<"D";
+	}
+	else
+	{
+		cout<<"E";
+	}
+	return 0;
+}
+第五题：
+#include<iostream>
+using namespace std;
+int main()
+{
+	int BJT;
+	cin>>BJT;
+	int n1,n2;
+	n1=BJT/100;
+	n2=BJT%100;
+	if(n1-8>0)
+	{
+	    if(n2>=10)
+	    {
+		  	cout<<n1-8<<n2;
+     	 }
+		else
+		{
+			cout<<n1-8<<'0'<<n2<<endl;
+		 }
+	}
+	else if(n1-8==0)
+	{
+		if(n2>10)
+		{
+			cout<<n2<<endl;
+		}
+		else if(0<n2<10)
+		{
+			cout<<n2<<endl;
+		}	
+		else if(n2==0)
+		{
+			cout<<'0';
+		}
+	}
+	else
+	{
+		n1=24-8+n1;
+		if(n2>=10)
+		{
+			cout<<n1<<n2<<endl;
+		}
+		else if(0<n2<10)
+		{
+			cout<<n1<<'0'<<n2<<endl;
+		}
+		else if(n2==0)
+		{
+			cout<<n1<<endl;
+		}
+	}
+	return 0;
+}
