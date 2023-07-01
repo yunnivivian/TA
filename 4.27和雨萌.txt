@@ -1,0 +1,231 @@
+第一题
+#include<iostream>
+using namespace std;
+int even(n);
+int main()
+{
+	int arr[100];
+	int i=0;
+	int count=0;
+	for(i=0;cin;i++)
+	{
+		cin>>arr[i];
+		count++;
+	}
+	int sum=0;
+	for(int j=0;j<count;j++)
+	{
+		if(!even(arr[j]))
+		{
+			sum+=arr[j];
+		}
+	}
+	cout<<sum;
+	return 0;
+}
+int even(int n)
+{
+	if(n%2==0)
+	{
+		return 1;
+			}
+	else
+	{
+		return 0;
+	}
+}
+第二题
+#include<iostream>
+using namespace std;
+int Big(int a,int b);
+int Small(int a,int b);
+int small(int a,int b);
+int main()
+{
+	int A,B;
+	cin>>A>>B;
+	cout<<Big(A,B)<<endl;
+	cout<<Small(A,B)<<endl;
+	return 0;
+}
+int small(int a,int b)
+{
+	if(a>b)
+	{
+		return b;
+	}
+	else
+	{
+		return a;
+	}
+}
+int Big(int a,int b)
+{
+	int temp=2;
+	int max=0;
+	for(int i=2;i++;i<=small(a,b))
+	{
+		if(a%i==0&&b%i==0&&i>max)
+		{
+			max=i;
+		}
+	}
+	return max;
+}
+int Small(int a,int b)
+{
+	return a*b/Big(a,b);
+}
+第三题
+#include<iostream>
+using namespace std;
+int main()
+{
+	int mon,son;
+	cin>>mon>>son;
+	cout<<"0.";
+	int count=0;
+	while(count<=200)
+	{
+		cout<<mon*10/son;
+		mon=(mon*10%son)*10;
+		count++;
+		if(mon==0)
+		{
+			break;
+		}
+	}
+	return 0;
+}
+第四题：
+#include<iostream>
+using namespace std;
+int main()
+{
+	int exp[100],index[100];
+	int count=0;
+	for(int i=0;;i++)
+	{
+		cin>>exp[i]>>index[i];
+		if(!cin>>exp[i])
+		{
+			cin.clear();
+			break;
+		}
+		count++;
+	}
+	int relist[count];
+	for(int j=0;j<count;j++)
+	{
+		int max=0;
+		int index=0;
+		for(int m=0;m<count;m++)
+		{
+			if(exp[m]>=max)
+			{
+				max=exp[m];
+				index=m;
+			}
+		}
+		relist[j]=index;
+		exp[index]=0-exp[index];
+		max=0;
+	}
+	int st=0;
+	int en=0;
+	int sum[100]={0};
+	int temp=0;
+	for(int i=0;i<count;i++)
+	{
+		if((i==0||(exp[relist[i]]!=exp[relist[i-1]]&&exp[relist[i]]==exp[relist[i+1]]))&&i!=count-1)
+		{
+			st=i;
+		}
+		else if(i==count-1||(exp[relist[i-1]]==exp[relist[i]]&&exp[relist[i]]!=exp[relist[i+1]])||i!=0)
+		{
+			en=i;
+			for(int h=st;h<=en;h++)
+			{
+				sum[temp]+=index[relist[h]];
+			}
+			if(exp[relist[en]]==0)
+			{
+				cout<<sum[temp];
+			}
+			else if(exp[relist[en]]==-1)
+			{
+				cout<<sum[temp]<<"x + ";
+			}
+			else
+			{
+			    cout<<sum[temp]<<" x "<<0-exp[relist[i]]<<" + ";
+			}
+			temp++;
+			st=en+1;
+			en=0;
+		}
+	}
+	return 0;
+}
+第五题：
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	int arr[100][100];
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			cin>>arr[i][j];
+		}
+	}
+	int index1,index2=0;
+	int max_list[100];
+	int judge[100]={0};
+	for(int i=0;i<n;i++)
+	{
+	    int temp=0;
+		int max=0;
+		for(int j=0;j<n;j++)
+		{
+			if(arr[i][j]>max)
+			{
+				max=arr[i][j];
+				index1=j;
+			}
+		}
+		max=arr[i][index1];
+		for(int k=0;k<n;k++)
+		{
+			if(arr[k][index1]<max)
+			{
+				temp=1;
+			}
+		}
+		if(temp==1)
+		{
+			judge[i]=1;
+		}
+		else
+		{
+			cout<<"One of the apporiate point is: ("<<i<<", "<<index1<<")"<<endl;
+		}
+	}
+	int temp1=0;
+	for(int i=0;i<n;i++)
+	{
+		if(judge[i]==0)
+		{
+			temp1=1;
+			break;
+		}
+	}
+	if(temp1==0)
+	{
+		cout<<"No";
+	}
+	return 0;
+}
