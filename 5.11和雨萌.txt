@@ -1,0 +1,103 @@
+第一题：
+#include<iostream>
+#include<cstring>
+using namespace std;
+int main()
+{
+	char str[100];
+	cin.getline(str,100);
+	int tem=0;
+	int len=strlen(str);
+	for(int i=0;i<len;i++)
+	{
+		if(str[i]!=' '&&str[i]!='.')
+		{
+			tem++;
+		}
+		else if(str[i]==' '||str[i]=='.')
+		{
+			    cout<<tem<<' ';
+			    tem=0;
+		}
+	}
+	return 0;
+}
+第二题：
+#include<iostream>
+using namespace std;
+double pow(int x,int n);
+int main()
+{
+	int a1,a2;
+	cin>>a1>>a2;
+	int res=pow(a1,a2);
+	cout<<res;
+	return 0;
+}
+double pow(int x,int n)
+{
+	if(n==0)
+	{
+		return 1;
+	}
+	else
+	{
+		return x*pow(x,n-1);
+	}
+}
+第三题：
+#include<iostream>
+#include<cstring>
+using namespace std;
+int main()
+{
+	char arr[32];
+	cin.getline(arr,32);
+	int len=strlen(arr);
+	for(int i=len-1;i>=0;i--)
+	{
+		cout<<arr[i];
+	}
+	return 0;
+}
+第四题：
+存在疑问？如何表示Step和具体的Disk
+#include<iostream>
+using namespace std;
+void Hanuota(int n,char a,char b,char c);
+void mov(char x,char y);
+int step(int n);
+int Step=1;//the use is to record the every step
+int main()
+{
+	int N;
+	cin>>N;
+	Hanuota(N,'A','B','C');
+}
+void mov(char x,char y)//explain the precise step
+{
+	cout<<" from "<<x<<" to "<<y<<endl;
+}
+int step(int n)//calculate the step of hanuota
+{
+	int index=1;
+	for(int i=0;i<n;i++)
+	{
+		index*=2;
+	}
+	return index-1;
+}
+void Hanuota(int n,char a,char b,char c)//using digui
+{//the question is that the "Step"?
+	if(n==1)
+	{
+		mov(a,c);
+	}
+	else
+	{
+		Hanuota(n-1,a,c,b);
+		mov(a,c);//the step is to express the biggest one move
+		Step++;
+		Hanuota(n-1,b,a,c);
+	}
+}
