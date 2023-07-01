@@ -1,0 +1,36 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+int mystrstr(char a[],char b[])
+{
+	int len1=strlen(a);
+	int len2=strlen(b);
+	int temp2=0;
+	for(int i=0;i<len1;i++)
+	{
+		int temp1=0;
+		if(a[i]==b[0])
+		{
+			for(int j=0;j<len2;j++)
+			{
+				if(a[i+j]!=b[j])
+				{
+					temp1=1;
+					break;
+				}
+			}
+		}
+		if(temp1==0)
+		{
+			return i;
+		}
+	}
+	return 
+}
+int main()
+{
+	char str1[]="sdakhhdgg";
+	char str2[]="hdg";
+	mystrstr(str1,str2);
+	return 0;
+}
